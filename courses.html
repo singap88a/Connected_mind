@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <head>
+        <!-- Google Fonts  -->
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@200..1000&display=swap" rel="stylesheet" />
+        <!-- Main Normalize File  -->
+        <link rel="stylesheet" href="Css/normalize.css" />
+        <!-- Main Style Css file -->
+        <link rel="stylesheet" href="Css/courses.css" />
+        <!-- Font Awesome Library  -->
+        <link rel="stylesheet" href="Css/all.min.css" />
+    </head>
+    <title>الدورات</title>
+
+    <style>
+        .toast {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: #4CAF50;
+            color: white;
+            padding: 15px;
+            border-radius: 4px;
+            display: none;
+            z-index: 1000;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+            animation: slideIn 0.5s ease-out;
+        }
+
+        .toast.success {
+            background: #28a745;
+        }
+
+        .toast.error {
+            background: #dc3545;
+        }
+
+        .toast-progress {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            height: 3px;
+            background: rgba(255, 255, 255, 0.5);
+            width: 100%;
+            animation: progress 3s linear forwards;
+        }
+
+        @keyframes slideIn {
+            from {
+                transform: translateX(100%);
+            }
+
+            to {
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes progress {
+            from {
+                width: 100%;
+            }
+
+            to {
+                width: 0%;
+            }
+        }
+    </style>
+
+</head>
+
+<body>
+    <!-- بداية شريط التنقل -->
+    <header class="navbar">
+        <div class="container">
+            <div class="logo">
+                <a href="home.html">
+                    <img  src="Graphics/Logo.png" alt="" />
+                   </a>
+            </div>
+            <nav>
+                <ul class="nav-links">
+                    <li><a href="home.html" class="active">الرئيسية</a></li>
+                    <li><a href="#description">الوصف</a></li>
+                    <li><a href="courses.html">الدورات</a></li>
+                    <li><a href="aichat.html">الذكاء الصناعي</a></li>
+                    <li><a href="chat.html">المحادثات</a></li>
+                    <li><a href="jobs.html">التوظيف</a></li>
+                </ul>
+            </nav>
+            <div class="sign-in">
+                <div  style="cursor: pointer; margin-left: 5px;">
+                    <a title="profile" href="profile.html"><i class="fa-solid fa-circle-user"></i></a>
+                  </div>
+                <div class="br-menu"><i class="fa-solid fa-bars"></i></div>
+                <a id="authLink" href="index.html"><i class="fa-solid fa-right-from-bracket"></i></a>
+            </div>
+        </div>
+    </header>
+    <!-- نهاية شريط التنقل -->
+
+    <!-- Start proggraming section   -->
+    <div class="proggraming">
+        <div class="container">
+            <img src="Graphics/Proggraming image.svg" alt="">
+            <div class="content">
+                <h2>البرمجه / Proggraming </h2>
+                <p>تعلم الاساسيات وابدأ مسيرتك في البرمجه</p>
+                <div class="according">
+                    <input type="checkbox" id="extra-head">
+                    <label for="extra-head">عرض التفاصيل<i class="fa-solid fa-angle-down"></i></label>
+                    <div class="extra-content">
+                        <p>تعلم لغة <span>HTML</span> <a target="_blank" href="https://www.w3schools.com/Html/">من هنا</a> </p>
+                        <p>تعلم لغة <span>CSS</span> <a target="_blank" href="https://www.w3schools.com/css/">من هنا</a> </p>
+                        <p>تعلم لغة <span>JAVASCRIPT</span> <a target="_blank" href="https://www.w3schools.com/js/">من هنا</a> </p>
+                        <p>تعلم لغة <span>PYTHON</span> <a target="_blank" href="https://www.w3schools.com/python/">من هنا</a> </p>
+                        <p>تعلم لغة <span>JAVA</span> <a target="_blank" href="https://www.w3schools.com/java/">من هنا</a> </p>
+                        <p>تعلم لغة <span>C#</span> <a target="_blank" href="https://www.w3schools.com/c/#/">من هنا</a> </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- End proggraming section   -->
+    <!-- Start graphic section   -->
+    <div class="graphic">
+        <div class="container">
+            <img src="Graphics/1920x1080-3d-graphic-designer-working-in-office-png.png" alt="">
+            <div class="content">
+                <h2>التصميم الجرافيكي / Graphic Design </h2>
+                <p>اكتشف اساسيات التصميم وابدأ الابداع</p>
+                <div class="according">
+                    <input type="checkbox" id="extra-headg">
+                    <label for="extra-headg">عرض التفاصيل<i class="fa-solid fa-angle-down"></i></label>
+                    <div class="extra-content">
+                        <p>تعلم اساسيات <span>PHOTOSHOP</span> <a target="_blank" href="https://www.adobe.com/africa/learn/photoshop">من هنا</a> </p>
+                        <p>تعلم اساسيات <span>ILLUSTRATOR</span> <a target="_blank" href="https://www.adobe.com/mena_en/learn/illustrator">من هنا</a> </p>
+                        <p>تعلم اساسيات <span>PREMIERE</span> <a target="_blank" href="https://www.adobe.com/africa/learn/premiere-pro">من هنا</a> </p>
+                        <p>تعلم اساسيات <span>AFTER EFFECT</span> <a target="_blank" href="https://www.adobe.com/africa/learn/after-effects">من هنا</a> </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- End graphic section   -->
+    <!-- Start ICDL section   -->
+    <div class="icdl">
+        <div class="container">
+            <img src="Graphics/ICDL.png" alt="">
+            <div class="content">
+                <h2>الحاسب الآلي / ICDL</h2>
+                <p>تعلم الاساسيات استخدام الحاسب الآلي وبرامج ميكروسوفت</p>
+                <div class="according">
+                    <input type="checkbox" id="extra-headi">
+                    <label for="extra-headi">عرض التفاصيل<i class="fa-solid fa-angle-down"></i></label>
+                    <div class="extra-content">
+                        <p>تعلم اساسيات <span>الحاسب الآلي</span> <a target="_blank" href="https://codeyalla.org/en/coding-academy/?utm_source=google&utm_medium=cpc&utm_campaign=20952435020&utm_content=163502069175&utm_term=coding%20courses&gad_source=1&gclid=CjwKCAjwk43ABhBIEiwAvvMEB5ZAYaxaqyEJSYeFs99qfHhkBzVZhFgYj2CAB4z_OtqS7BfranKTlxoC9dgQAvD_BwE">من هنا</a> </p>
+                        <p>تعلم اساسيات <span>برامج OFFICE</span> <a target="_blank" href="https://support.microsoft.com/en-us/training">من هنا</a> </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- End ICDL section   -->
+    <!-- Start Markting section   -->
+    <div class="markting">
+        <div class="container">
+            <img src="Graphics/Marketing.png" alt="">
+            <div class="content">
+                <h2>التسويق / Markting</h2>
+                <p>تعلم اهم مبادئ التسويق وكيفية تسويق منتجاتك</p>
+                <div class="according">
+                    <input type="checkbox" id="extra-headm">
+                    <label for="extra-headm">عرض التفاصيل<i class="fa-solid fa-angle-down"></i></label>
+                    <div class="extra-content">
+                        <p>تعلم اساسيات <span>التسويق </span> <a target="_blank" href="https://www.coursera.org/browse/business/marketing">من هنا</a> </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- End Markting section   -->
+    <!-- بداية شريط النهايه  -->
+    <div class="footer">
+        <div class="container">
+            <a href="home.html">
+                <img  src="Graphics/Logo.png" alt="" />
+               </a>
+            <div class="footer-info">
+                <h3><i class="fa-solid fa-house"></i> معهد الدلتا العالي للحاسبات والمعلومات</i></h3>
+                <p><i class="fa-solid fa-phone"></i>+201005286752</p>
+                <p><i class="fa-solid fa-phone"></i>+201005286752</p>
+            </div>
+            <div class="footer-sources">
+                <h3>اهم المصادر والمراجع</h3>
+                <ul class="styled-links">
+                    <li>
+                        <a href="https://www.codecademy.com/" target="_blank">
+                            <!-- <i class="fas fa-laptop-code"></i> -->
+                             Codecademy (برمجة تفاعلية)
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://www.behance.net/" target="_blank">
+                            <!-- <i class="fab fa-behance"></i> -->
+                             Behance (تصميم جرافيك)
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://analytics.google.com/analytics/academy/" target="_blank">
+                            <!-- <i class="fas fa-chart-line"></i> -->
+                             Google Analytics Academy
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://www.maharah.net/" target="_blank">
+                            <!-- <i class="fas fa-graduation-cap"></i> -->
+                             مهارة (منصة سعودية)
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://www.udemy.com/courses/office-productivity/" target="_blank">
+                            <!-- <i class="fas fa-file-excel"></i> -->
+                             دورات أوفيس على Udemy
+                        </a>
+                    </li>
+                </ul>
+            </div>
+            <div class="footer-contact">
+                <h3>تواصل معنا</h3>
+                <div class="social-icons">
+                    <a href=""><i class="fa-brands fa-facebook"></i></a>
+                    <a href=""><i class="fa-brands fa-instagram"></i></a>
+                    <a href=""><i class="fa-brands fa-google"></i></a>
+                    <a href=""><i class="fa-brands fa-whatsapp"></i></a>
+                    <a href=""><i class="fa-brands fa-youtube"></i></a>
+                </div>
+                <p>نهدف الي التعلم الجماعي , نتيح دورات في مختلف المجالات , دردشه جماعيه بين الطلاب والمعلمين , قسم خاص
+                    للتوظيف</p>
+            </div>
+        </div>
+    </div>
+
+    <div id="toast" class="toast">
+        <div class="toast-content"></div>
+        <div class="toast-progress"></div>
+    </div>
+
+    <!-- نهاية شريط النهايه  -->
+</body>
+<script src="script.js"></script>
+
+<script>
+    window.addEventListener('DOMContentLoaded', () => {
+      const jwtToken = localStorage.getItem("jwtToken");
+      const authLink = document.getElementById('authLink');
+       const backendUrl = "https://connected-mind-backend-yhg6.vercel.app";
+    // const backendUrl = "http://localhost:3000";
+  
+      if (jwtToken) {
+        authLink.innerHTML = '<i class="fa-solid fa-right-from-bracket"></i>';
+        
+        authLink.addEventListener('click', async (e) => {
+          e.preventDefault();
+          
+          try {
+            const response = await fetch(`${backendUrl}/api/auth/logout`, {
+              method: 'POST',
+              headers: {
+                'Authorization': `Bearer ${jwtToken}`
+              }
+            });
+  
+            if (response.ok) {
+              showToast('تم تسجيل الخروج بنجاح', false);
+              localStorage.removeItem('jwtToken');
+              window.location.href = 'login.html';
+            } else {
+              console.error('فشل تسجيل الخروج');
+              showToast('❌ فشل في تسجيل الخروج', true);
+            }
+          } catch (error) {
+            console.error('خطأ في الاتصال:', error);
+            showToast('❌ حدث خطأ أثناء الاتصال بالخادم', true);
+          }
+        });
+        
+      } else {
+        authLink.innerHTML = '<i class="fa-solid fa-right-from-bracket"></i>';
+        authLink.href = 'index.html';
+      }
+    });
+  
+       function showToast(message, isError = false) {
+          const toast = document.getElementById('toast');
+          toast.querySelector('.toast-content').textContent = message;
+          toast.className = `toast ${isError ? 'error' : 'success'}`;
+          toast.style.display = 'block';
+
+          setTimeout(() => {
+              toast.style.display = 'none';
+          }, 3000);
+      }
+  </script>
+</html>

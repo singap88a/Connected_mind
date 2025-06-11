@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Google Fonts  -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@200..1000&display=swap" rel="stylesheet" />
+    <!-- Main Style Css file -->
+    <link rel="stylesheet" href="Css/login.css">
+    <!-- Main Normalize File  -->
+    <link rel="stylesheet" href="Css/normalize.css" />
+    <!-- Font Awesome Library  -->
+    <link rel="stylesheet" href="Css/all.min.css" />
+    <title>انشاء حساب</title>
+
+    <style>
+        .toast {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: #4CAF50;
+            color: white;
+            padding: 15px;
+            border-radius: 4px;
+            display: none;
+            z-index: 1000;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+            animation: slideIn 0.5s ease-out;
+        }
+
+        .toast.success {
+            background: #28a745;
+        }
+
+        .toast.error {
+            background: #dc3545;
+        }
+
+        .toast-progress {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            height: 3px;
+            background: rgba(255, 255, 255, 0.5);
+            width: 100%;
+            animation: progress 3s linear forwards;
+        }
+
+        @keyframes slideIn {
+            from {
+                transform: translateX(100%);
+            }
+
+            to {
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes progress {
+            from {
+                width: 100%;
+            }
+
+            to {
+                width: 0%;
+            }
+        }
+    </style>
+
+</head>
+
+<body>
+    <div class="login-main">
+        <video autoplay loop muted plays-inline class="background-clip">
+            <source src="Graphics/6550419-uhd_3840_2160_25fps.mp4" type="video/mp4" />
+        </video>
+        <div class="container">
+            <img src="Graphics/sun-logo-vector-templates.png" alt="">
+            <div class="logo">
+                <a href="home.html">
+                    <img  src="Graphics/Logo.png" alt="" />
+                   </a>
+            </div>
+            <div class="login-items">
+                <div class="login-image">
+                    <img src="Graphics/purpose-journey-shutterstock_1613862631.png" alt="">
+                </div>
+                <div class="login-item-content">
+                    <div class="logo-name">
+                        <img src="Graphics/home1.png" alt="home">
+                        <p>شارك, تعلم</p>
+                    </div>
+                    <div class="form">
+                        <h1 class="title"> انشاء حساب</h1>
+                        <form id="registerForm">
+                            <div class="feild">
+                                <input type="text" id="reg-username" placeholder="اسم المستخدم" required>
+                            </div>
+                            <div class="feild">
+                                <input type="email" id="reg-email" placeholder="البريد الاكتروني" required>
+                            </div>
+                            <div class="feild">
+                                <input type="password" id="reg-password" placeholder="كلمة المرور" required>
+                            </div>
+                            <button type="submit">
+                                سجل الان
+                            </button>
+                        </form>
+                        <div id="registerMsg"></div>
+                        <a href="index.html"><i class="fa-solid fa-right-from-bracket"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="toast" class="toast">
+        <div class="toast-content"></div>
+        <div class="toast-progress"></div>
+    </div>
+
+    <script>
+         const backendUrl = "https://connected-mind-backend-yhg6.vercel.app";
+        // const backendUrl = "http://localhost:3000";
+        const token = localStorage.getItem("jwtToken");
+      
+        const headers = {
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${token}`
+        };
+      
+        (async () => {
+            try {
+                const response = await fetch(`${backendUrl}/api/auth/status`, { headers });
+                const data = await response.json();
+                console.log("بيانات التحقق:", data);
+      
+                if (data.authenticated) {
+                    if (
+                        window.location.pathname.includes('login.html') ||
+                        window.location.pathname.includes('register.html') ||
+                        window.location.pathname.includes('index.html') ||
+                        window.location.pathname.includes('admin.html') 
+                    ) {
+                        window.location.href = 'home.html';
+                    }
+                } else {
+                    if (window.location.pathname.includes('jobs.html')) {
+                        window.location.href = 'login.html';
+                    }
+                }
+            } catch (error) {
+                console.error('Auth check error:', error);
+            }
+        })();
+        
+        function showToast(message, isError = false) {
+            const toast = document.getElementById('toast');
+            toast.querySelector('.toast-content').textContent = message;
+            toast.className = `toast ${isError ? 'error' : ''}`;
+            toast.style.display = 'block';
+      
+            setTimeout(() => {
+                toast.style.display = 'none';
+            }, 3000);
+        }
+      
+        document.getElementById('registerForm').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const username = document.getElementById('reg-username').value;
+            const email = document.getElementById('reg-email').value;
+            const password = document.getElementById('reg-password').value;
+            const submitBtn = e.target.querySelector('button[type="submit"]');
+            submitBtn.disabled = true;
+            submitBtn.innerHTML = 'جاري التحميل...';
+            try {
+                const res = await fetch(`${backendUrl}/api/auth/register`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ username, email, password })
+                });
+      
+                const data = await res.json();
+      
+                if (data.status === 201) {
+                    showToast('✅ تم إنشاء الحساب بنجاح!');
+                    setTimeout(() => {
+                        window.location.href = 'login.html';
+                    }, 1500);
+                } else {
+                    showToast(`❌ ${data.message || data.msg}`, true);
+                }
+            } catch (error) {
+                console.error(error);
+                showToast('❌ حدث خطأ في الاتصال بالخادم', true);
+            }
+        });
+      </script>
+      
+</body>
+
+</html>

@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="ar">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@200;400;700;900&display=swap" rel="stylesheet" />
+    <!-- Normalize CSS -->
+    <link rel="stylesheet" href="Css/normalize.css" />
+    <!-- Main Style File -->
+    <link rel="stylesheet" href="Css/chat.css" />
+    <!-- Font Awesome Library -->
+    <link rel="stylesheet" href="Css/all.min.css" />
+    <title>الدردشة مع AI</title>
+    <style>
+      body {
+        font-family: 'Cairo', sans-serif;
+        background: #f4f4f4;
+        margin: 0;
+        padding: 0;
+      }
+      .navbar {
+        background: #333;
+        color: #fff;
+        padding: 10px 20px;
+      }
+      .navbar .container {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+      }
+      .navbar a {
+        color: #fff;
+        text-decoration: none;
+        margin: 0 10px;
+      }
+      .main-container {
+        display: flex;
+        justify-content: center;
+        padding: 20px;
+      }
+      .chat-container {
+        display: flex;
+        background: #fff;
+        box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        width: 90%;
+        max-width: 1200px;
+        border-radius: 8px;
+      }
+      .sidebar {
+        width: 20%;
+        border-right: 1px solid #ccc;
+        padding: 20px;
+      }
+      .chat-area {
+        width: 60%;
+        display: flex;
+        flex-direction: column;
+        padding: 20px;
+      }
+      @media screen and (max-width: 767px) {
+        .chat-area {
+        width: 100%;
+
+        }
+      }
+      .user-info {
+        width: 20%;
+        border-left: 1px solid #ccc;
+        padding: 20px;
+      }
+      .chat-box {
+        width: 100%;
+        height: 700px;
+        overflow-y: auto;
+        padding: 10px;
+        background: #eee;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        margin-bottom: 10px;
+      }
+      .chat-input {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+      }
+      .chat-input input {
+        flex: 1;
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        font-family: 'Cairo', sans-serif;
+      }
+      .chat-input button {
+        padding: 10px 15px;
+        border: none;
+        background: #28a745;
+        color: #fff;
+        cursor: pointer;
+        border-radius: 5px;
+      }
+      .message {
+        padding: 10px;
+        margin-bottom: 10px;
+        border-radius: 5px;
+        max-width: 90%;
+        word-wrap: break-word;
+      }
+      .sent {
+        background: #d1e7dd;
+        align-self: flex-end;
+      }
+      .received {
+        background: #f8d7da;
+        align-self: flex-start;
+      }
+      .toast {
+        display: none;
+        position: fixed;
+        bottom: 20px;
+        left: 50%;
+        transform: translateX(-50%);
+        background-color: #333;
+        color: #fff;
+        padding: 10px 20px;
+        border-radius: 5px;
+        z-index: 1000;
+      }
+      .toast.error {
+        background-color: #d9534f;
+      }
+      .toast.success {
+        background-color: #5cb85c;
+      }
+    </style>
+  </head>
+  <body>
+    <header class="navbar">
+      <div class="container">
+        <div class="logo">
+          <a href="home.html">
+            <img src="Graphics/Logo.png" alt="الشعار" style="width: 90px;" />
+          </a>
+        </div>
+        <nav>
+          <ul class="nav-links">
+            <li><a href="home.html" class="active">الرئيسية</a></li>
+            <li><a href="#description">الوصف</a></li>
+            <li><a href="courses.html">الدورات</a></li>
+            <li><a href="aichat.html">الذكاء الصناعي</a></li>
+            <li><a href="chat.html">المحادثات</a></li>
+            <li><a href="jobs.html">التوظيف</a></li>
+          </ul>
+        </nav>
+        <div class="sign-in">
+          <a title="الملف الشخصي" href="profile.html"><i class="fa-solid fa-circle-user"></i></a>
+          <a id="authLink" href="index.html"><i class="fa-solid fa-right-from-bracket"></i></a>
+        </div>
+      </div>
+    </header>
+
+    <div class="main-container">
+      <div class="chat-container">
+        <div class="sidebar">
+          <h2>الأعضاء</h2>
+          <ul class="chat-list">
+            <li id="memberName" class="chat-item active">اسم المستخدم</li>
+          </ul>
+        </div>
+
+        <div class="chat-area">
+          <div class="chat-box" id="aiChatBox">
+            <div class="chat-header">
+              <h3>   
+                عقول متصله AI
+        </h3>
+            </div>
+            <div class="chat-messages" id="aiChatMessages">
+            </div>
+          </div>
+          <div class="chat-input">
+            <input type="text" placeholder="اكتب سؤالك هنا..." id="aiMessageInput" />
+            <button id="sendAiBtn">➤</button>
+          </div>
+        </div>
+
+        <!-- معلومات المستخدم -->
+        <div class="user-info">
+          <img src="Graphics/circle-user-solid (1).svg" alt="User Image" class="profile-img" style="width: 80px; height: 80px;" />
+          <h3 id="username"></h3>
+          <p id="userRole">مطور مبتدئ</p>
+          <div class="btn-container">
+            <div class="button">
+              <i class="fa-solid fa-comment"></i>
+              <p>محادثة نصية</p>
+            </div>
+            <div class="button">
+              <i class="fa-solid fa-video"></i>
+              <p>مكالمة فيديو</p>
+            </div>
+          </div>
+          <h4>المرفقات</h4>
+          <div class="attachments">
+            <button><i class="fa-solid fa-file"></i>مستند</button>
+            <button><i class="fa-solid fa-file-video"></i>فيديو</button>
+            <button><i class="fa-solid fa-file-audio"></i>صوتي</button>
+            <button><i class="fa-solid fa-image"></i>صورة</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- رسالة التوست -->
+    <div id="toast" class="toast">
+      <div class="toast-content"></div>
+    </div>
+
+    <script>
+       const backendUrl = "https://connected-mind-backend-yhg6.vercel.app";
+      // const backendUrl = "http://localhost:3000";
+      const jwtToken = localStorage.getItem("jwtToken");
+
+      window.addEventListener('DOMContentLoaded', () => {
+      const jwtToken = localStorage.getItem("jwtToken");
+      const authLink = document.getElementById('authLink');
+       const backendUrl = "https://connected-mind-backend-yhg6.vercel.app";
+      // const backendUrl = "http://localhost:3000";
+  
+      if (jwtToken) {
+        authLink.innerHTML = '<i class="fa-solid fa-right-from-bracket"></i>';
+        
+        authLink.addEventListener('click', async (e) => {
+          e.preventDefault();
+          
+          try {
+            const response = await fetch(`${backendUrl}/api/auth/logout`, {
+              method: 'POST',
+              headers: {
+                'Authorization': `Bearer ${jwtToken}`
+              }
+            });
+  
+            if (response.ok) {
+              showToast('تم تسجيل الخروج بنجاح', false);
+              localStorage.removeItem('jwtToken');
+              window.location.href = 'login.html';
+            } else {
+              console.error('فشل تسجيل الخروج');
+              showToast('❌ فشل في تسجيل الخروج', true);
+            }
+          } catch (error) {
+            console.error('خطأ في الاتصال:', error);
+            showToast('❌ حدث خطأ أثناء الاتصال بالخادم', true);
+          }
+        });
+        
+      } else {
+        authLink.innerHTML = '<i class="fa-solid fa-right-from-bracket"></i>';
+        authLink.href = 'index.html';
+      }
+    });
+  
+       function showToast(message, isError = false) {
+          const toast = document.getElementById('toast');
+          toast.querySelector('.toast-content').textContent = message;
+          toast.className = `toast ${isError ? 'error' : 'success'}`;
+          toast.style.display = 'block';
+
+          setTimeout(() => {
+              toast.style.display = 'none';
+          }, 3000);
+      }
+
+
+      window.addEventListener('DOMContentLoaded', () => {
+        const authLink = document.getElementById('authLink');
+        if (jwtToken) {
+          authLink.innerHTML = '<i class="fa-solid fa-right-from-bracket"></i>';
+        } else {
+          authLink.innerHTML = '<i class="fa-solid fa-right-from-bracket"></i>';
+          authLink.href = 'index.html';
+        }
+        fetchProfile();
+      });
+
+      async function fetchProfile() {
+        try {
+          const response = await fetch(`${backendUrl}/api/users/user-details`, {
+            headers: {
+              'Authorization': `Bearer ${jwtToken}`
+            }
+          });
+          if (!response.ok) {
+            console.error('فشل في جلب بيانات المستخدم');
+            return;
+          }
+          const userData = await response.json();
+          document.getElementById('username').textContent = userData.data.username;
+          document.getElementById('userRole').textContent =
+            userData.data.role === 'admin' ? 'مدير النظام' : 'مستخدم عادي';
+          document.getElementById('memberName').textContent = userData.data.username;
+        } catch (error) {
+          console.error('Error:', error);
+          localStorage.removeItem('jwtToken');
+          window.location.href = 'login.html';
+        }
+      }
+
+      async function callGoogleGenerativeAI(userMessage) {
+  const apiUrl =
+  "https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=AIzaSyAXHfW1wrSr_OO3XFsmG2CkvdKT3flpagA"
+   ;
+
+  try {
+    const response = await fetch(apiUrl, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({
+        contents: [{
+          parts: [{ text: userMessage }]
+        }]
+      })
+    });
+
+    if (!response.ok) {
+      const errorData = await response.json();
+      throw new Error(errorData.error?.message || "فشل في جلب رد المساعد");
+    }
+
+    const data = await response.json();
+    return data.candidates?.[0]?.content?.parts?.[0]?.text || "لم يتم تلقي رد من المساعد.";
+  } catch (error) {
+    console.error("Error:", error);
+    showToast(error.message, true);
+    return "عذرًا، حدث خطأ أثناء معالجة طلبك. يرجى المحاولة لاحقًا.";
+  }
+}
+      document.getElementById('aiMessageInput').addEventListener('keypress', (e) => {
+  if (e.key === 'Enter') {
+    document.getElementById('sendAiBtn').click();
+  }
+});
+
+      document.getElementById("sendAiBtn").addEventListener("click", async () => {
+        const input = document.getElementById("aiMessageInput");
+        const messagesContainer = document.getElementById("aiChatMessages");
+        const userMessage = input.value.trim();
+        if (userMessage === "") return;
+
+        // عرض رسالة المستخدم
+        const userMsgDiv = document.createElement("div");
+        userMsgDiv.className = "message sent";
+        userMsgDiv.textContent = userMessage;
+        messagesContainer.appendChild(userMsgDiv);
+        input.value = "";
+
+        const botMsgDiv = document.createElement("div");
+        botMsgDiv.className = "message received";
+        botMsgDiv.textContent = "THINKING...";
+        messagesContainer.appendChild(botMsgDiv);
+
+        const aiReply = await callGoogleGenerativeAI(userMessage);
+        botMsgDiv.textContent = aiReply;
+
+        messagesContainer.scrollTop = messagesContainer.scrollHeight;
+      });
+    </script>
+  </body>
+</html>

@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="ar">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Google Fonts  -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@200..1000&display=swap" rel="stylesheet" />
+    <!-- Main Normalize File  -->
+    <link rel="stylesheet" href="Css/normalize.css" />
+    <!-- Main Style File  -->
+    <link rel="stylesheet" href="Css/chat.css">
+    <!-- Font Awesome Library  -->
+    <link rel="stylesheet" href="Css/all.min.css" />
+    <title>المحادثات</title>
+</head>
+
+<body>
+    <!-- بداية شريط التنقل -->
+    <header class="navbar">
+        <div class="container">
+            <div class="logo">
+                <img src="Graphics/Logo.png" alt="" />
+            </div>
+            <nav>
+                <ul class="nav-links">
+                    <li><a href="home.html" class="active">الرئيسية</a></li>
+                    <li><a href="#description">الوصف</a></li>
+                    <li><a href="courses.html">الدورات</a></li>
+                    <li><a href="aichat.html">الذكاء الصناعي</a></li>
+                    <li><a href="chat.html">المحادثات</a></li>
+                    <li><a href="jobs.html">التوظيف</a></li>
+                </ul>
+            </nav>
+            <div class="sign-in">
+                <i class="fa-solid fa-circle-user"></i>
+                <div class="br-menu"><i class="fa-solid fa-bars"></i></div>
+                <a href="main.html"><i class="fa-solid fa-right-from-bracket"></i></a>
+            </div>
+        </div>
+    </header>
+    <!-- نهاية شريط التنقل -->
+    <div class="main-container">
+        <div class="chat-container">
+            <!-- القائمة الجانبية للمستخدمين -->
+            <div class="sidebar">
+                <h2>الأعضاء</h2>
+                <input type="text" placeholder="...البحث هنا" class="search-bar">
+                <ul class="chat-list">
+                    <li class="chat-item active">اسلام محمد</li>
+                    <li class="chat-item">محمود سعيد</li>
+                    <li class="chat-item">مصطفى عبد الرحمن</li>
+                    <li class="chat-item">أمنية خالد</li>
+                </ul>
+            </div>
+
+            <!-- منطقة المحادثة -->
+            <div class="chat-box">
+                <div class="chat-header">
+                    <h3>محادثة جماعية</h3>
+                    <span class="online-status"></span>
+                </div>
+                <div class="chat-messages">
+                    <div class="message received">مرحبا اسلام هل حصلت على تقرير المشروع بصيغة pdf ؟</div>
+                    <div class="message sent">لا لم احصل عليه بعد</div>
+                    <div class="message received">
+                        حسنا..سأرسله هنا يجب عليك ملء البيانات
+                        <div class="attachment">📄 تقرير المشروع.pdf</div>
+                    </div>
+                    <div class="message sent">حسنا هل يجب علي ارساله عبر البريد؟</div>
+                    <div class="message received">نعم سأضيف المزيد من الاعضاء اليه</div>
+                    <div class="message sent">حسنا</div>
+                </div>
+                <div class="chat-input">
+                    <i class="fa-solid fa-microphone"></i>
+                    <i class="fa-solid fa-camera"></i>
+                    <i class="fa-solid fa-paperclip"></i>
+                    <i class="fa-regular fa-face-smile"></i>
+                    <input type="text" placeholder="اكتب شيئا..." id="messageInput">
+                    <button id="sendBtn">➤</button>
+                </div>
+            </div>
+
+            <!-- معلومات المستخدم -->
+            <div class="user-info">
+                <img src="Graphics/circle-user-solid (1).svg" alt="User Image" class="profile-img">
+                <h3>أشرف سعد</h3>
+                <p>مطور مبتدئ</p>
+                <div class="btn-container">
+                    <div class="button">
+                        <i class="fa-solid fa-comment"></i>
+                        <p>محاثة نصية</p>
+                    </div>
+                    <div class="button">
+                        <i class="fa-solid fa-video"></i>
+                        <p>مكالمة فيديو</p>
+                    </div>
+                </div>
+                <h4>المرفقات</h4>
+                <div class="attachments">
+                    <button><i class="fa-solid fa-file"></i>مستند</button>
+                    <button><i class="fa-solid fa-file-video"></i>فيديو</button>
+                    <button><i class="fa-solid fa-file-audio"></i>صوتي</button>
+                    <button><i class="fa-solid fa-image"></i>صورة</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+
+</html>

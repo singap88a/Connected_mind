@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>عقول متصلة</title>
+    <!-- Google Fonts  -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@200..1000&display=swap" rel="stylesheet" />
+    <!-- Main Normalize File  -->
+    <link rel="stylesheet" href="Css/normalize.css" />
+    <!-- Main Style Css file -->
+    <link rel="stylesheet" href="Css/main.css" />
+    <!-- Font Awesome Library  -->
+    <link rel="stylesheet" href="Css/all.min.css" />
+</head>
+
+<body>
+    <div class="main">
+        <div class="main-container">
+            <div class="heading">
+                <div class="logo">
+                    <a href="home.html">
+                        <img  src="Graphics/Logo.png" alt="" />
+                       </a>
+                </div>
+                <div class="text-part">
+                    <img src="Graphics/undraw_teacher_s628.svg" alt="">
+                    <h2>اهلا ومرحبا بك في منصة عقول متصله للتعلم التعاوني عبر الانترنت</h2>
+                    <img src="Graphics/undraw_online-test_20lm.svg" alt="">
+                </div>
+            </div>
+            <div class="mid-part">
+                <div class="image-mid">
+                    <img src="Graphics/undraw_true-friends_i66s.svg" alt="">
+                </div>
+                <div class="mid-text">
+                    <h3> ما تقدمه المنصه </h3>
+                    <ul>
+                        <li>اهم الدورات والكورسات في مختلف المجالات</li>
+                        <li>قسم خاص للمناقشات والمحادثات الجماعيه</li>
+                        <li>قسم خاص لاستقبال طلبات التوظيف</li>
+                    </ul>
+                    <img src="Graphics/undraw_scrum-board_uqku.svg" alt="">
+                </div>
+            </div>
+            <div class="reg-part">
+                <div class="reg-btn">
+                    <a href="login.html">تسجيل الدخول</a>
+                </div>
+                <p>ليس لديك حساب ؟<span><a href="register.html">انشاء حساب</a></span></p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+
+        //  const backendUrl = "https://connected-mind-backend-yhg6.vercel.app/";
+        const backendUrl = "http://localhost:3000";
+
+
+        const token = localStorage.getItem("jwtToken");
+
+        const headers = {
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${token}`
+        };
+
+        (async () => {
+            try {
+                const response = await fetch(`${backendUrl}/api/auth/status`, { headers });
+                const data = await response.json();
+                console.log("بيانات التحقق:", data);
+
+                if (data.authenticated) {
+                    if (
+                        window.location.pathname.includes('login.html') ||
+                        window.location.pathname.includes('register.html') ||
+                        window.location.pathname.includes('index.html')
+                    ) {
+                        window.location.href = 'home.html';
+                    }
+                } else {
+                    if (window.location.pathname.includes('jobs.html')) {
+                        window.location.href = 'login.html';
+                    }
+                }
+            } catch (error) {
+                console.error('Auth check error:', error);
+            }
+        })();
+    </script>
+</body>
+
+</html>

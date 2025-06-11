@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Google Fonts  -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@200..1000&display=swap" rel="stylesheet" />
+    <!-- Main Normalize File  -->
+    <link rel="stylesheet" href="Css/normalize.css" />
+    <!-- Main Style Css file -->
+    <link rel="stylesheet" href="Css/jobs.css" />
+    <!-- Font Awesome Library  -->
+    <link rel="stylesheet" href="Css/all.min.css" />
+    <title>التوظيف</title>
+
+    <style>
+        .toast {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: #4CAF50;
+            color: white;
+            padding: 15px;
+            border-radius: 4px;
+            display: none;
+            z-index: 1000;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+            animation: slideIn 0.5s ease-out;
+        }
+
+        .toast.success {
+            background: #28a745;
+        }
+
+        .toast.error {
+            background: #dc3545;
+        }
+
+        .toast-progress {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            height: 3px;
+            background: rgba(255, 255, 255, 0.5);
+            width: 100%;
+            animation: progress 3s linear forwards;
+        }
+
+        @keyframes slideIn {
+            from {
+                transform: translateX(100%);
+            }
+
+            to {
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes progress {
+            from {
+                width: 100%;
+            }
+
+            to {
+                width: 0%;
+            }
+        }
+    </style>
+
+</head>
+
+<body>
+    <!-- بداية شريط التنقل -->
+    <header class="navbar">
+        <div class="container">
+            <div class="logo">
+                <a href="home.html">
+                    <img  src="Graphics/Logo.png" alt="" />
+                   </a>
+            </div>
+            <nav>
+                <ul class="nav-links">
+                    <li><a href="home.html" class="active">الرئيسية</a></li>
+                    <li><a href="#description">الوصف</a></li>
+                    <li><a href="courses.html">الدورات</a></li>
+                    <li><a href="aichat.html">الذكاء الصناعي</a></li>
+                    <li><a href="chat.html">المحادثات</a></li>
+                    <li><a href="jobs.html">التوظيف</a></li>
+                </ul>
+            </nav>
+            <div class="sign-in">
+                <div style="cursor: pointer;margin-left: 5px;">
+                    <a title="profile" href="profile.html"><i class="fa-solid fa-circle-user"></i></a>
+                  </div>
+                <div class="br-menu"><i class="fa-solid fa-bars"></i></div>
+                <a id="authLink" href="index.html"><i class="fa-solid fa-right-from-bracket"></i></a>
+            </div>
+        </div>
+    </header>
+    <!-- نهاية شريط التنقل -->
+    <!-- Start main container  -->
+    <div class="main-container">
+        <div class="main-content">
+            <div class="total-jobs">
+                <h3>اجمالي الوظائف</h3>
+                <h1>45<i class="fa-solid fa-file"></i></h1>
+                <div class="meeting">
+                    <h3>المقابلات</h3>
+                    <h1>8<i class="fa-solid fa-circle-user"></i></h1>
+                </div>
+            </div>
+            <div class="show-jobs">
+                <h3>حالة الوظائف المتقدم لها</h3>
+                <div class="shapes">
+                    <div class="circle-container">
+                        <div class="circle">
+                            <div class="item layer-1">
+                                <div class="fill"></div>
+                            </div>
+                            <div class="item layer-2">
+                                <div class="fill"></div>
+                            </div>
+                            <div class="inside-circle">65%</div>
+                        </div>
+                    </div>
+                    <div class="circle-percent">
+                        <h2>65%</h2>
+                        <p>غير مناسب</p>
+                        <h2>35%</h2>
+                        <p>مقابلة عمل</p>
+                    </div>
+                </div>
+                <a href="">استعرض كل الوظائف <i class="fa-solid fa-left-long"></i></a>
+            </div>
+            <div class="next-meet">
+                <h3>المقابلات القادمه</h3>
+                <hr />
+                <div class="meeting-day">
+                    <p><span>اليوم</span> 30 مارس</p>
+                    <div class="arrows">
+                        <i class="fa-solid fa-right-long"></i>
+                        <i class="fa-solid fa-left-long"></i>
+                    </div>
+                </div>
+                <hr />
+                <div class="main-card">
+                    <div class="timing">
+                        <p>10:00AM</p>
+                        <p>10:30AM</p>
+                        <p>11:00AM</p>
+                    </div>
+                    <div class="avatar-container">
+                        <img src="Graphics/undraw_young-man-avatar_wgbd.svg" alt="">
+                        <div class="avatar-content">
+                            <h3>ماجد اشرف</h3>
+                            <p>مدير الصحافه علي ديسكورد</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="sidebar">
+            <div class="menu">
+                <ul>
+                    <li><a href=""><i class="fa-solid fa-house"></i> الرئيسية</a></li>
+                    <li><a href="" class="active"><i class="fa-regular fa-message"></i> الرسائل</a></li>
+                    <li><a href=""><i class="fa-solid fa-file-import"></i> طلبات التقديم</a></li>
+                    <li><a href=""><i class="fa-solid fa-magnifying-glass"></i> بحث عن وظيفه</a></li>
+                    <li><a href=""><i class="fa-solid fa-building-user"></i> استعراض الشركات</a></li>
+                    <li><a href=""><i class="fa-solid fa-user"></i> حسابي</a></li>
+                </ul>
+            </div>
+            <div class="help-center">
+                <a href=""><i class="fa-regular fa-circle-question"></i> مركز المساعده</a>
+                <img src="Graphics/undraw_organizing-data_uns9.svg" alt="">
+            </div>
+        </div>
+        <div class="info-content">
+            <div class="history-box">
+                <div class="box">
+                    <div class="box-info">
+                        <img src="Graphics/1643811.png" alt="">
+                        <div class="box-content">
+                            <h3>مصمم UI/UX</h3>
+                            <p>السعوديه-جده_graphic design</p>
+                        </div>
+                    </div>
+                    <div class="box-timing">
+                        <h3>تاريخ التقديم</h3>
+                        <p>19 ابريل 2024</p>
+                    </div>
+                    <div class="box-btn">
+                        <p>تحت المراجعه</p>
+                    </div>
+                </div>
+                <div class="box">
+                    <div class="box-info">
+                        <img src="Graphics/company-logo-transparent-png-19.png" alt="">
+                        <div class="box-content">
+                            <h3>ريادة الاعمال والتسويق / Markting</h3>
+                            <p>الامارات-ابو ظبي -markting</p>
+                        </div>
+                    </div>
+                    <div class="box-timing">
+                        <h3>تاريخ التقديم</h3>
+                        <p>19 ابريل 2024</p>
+                    </div>
+                    <div class="box-btn">
+                        <p>مرفوض</p>
+                    </div>
+                </div>
+                <div class="box">
+                    <div class="box-info">
+                        <img src="Graphics/pngtree-counterfeit-money-prevention-rgb-color-icon-safety-authenticity-thin-vector-png-image_39859054.png"
+                            alt="">
+                        <div class="box-content">
+                            <h3>مبرمج/Programmer</h3>
+                            <p>تركيا-اسطنبول-programmer</p>
+                        </div>
+                    </div>
+                    <div class="box-timing">
+                        <h3>تاريخ التقديم</h3>
+                        <p>19 ابريل 2024</p>
+                    </div>
+                    <div class="box-btn">
+                        <p>تم الموافقه</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- End main container  -->
+    <!-- بداية شريط النهايه  -->
+    <div class="footer">
+        <div class="container">
+            <a href="home.html">
+                <img  src="Graphics/Logo.png" alt="" />
+               </a>
+            <div class="footer-info">
+                <h3><i class="fa-solid fa-house"></i> معهد الدلتا العالي للحاسبات والمعلومات</i></h3>
+                <p><i class="fa-solid fa-phone"></i>+201005286752</p>
+                <p><i class="fa-solid fa-phone"></i>+201005286752</p>
+            </div>
+            <div class="footer-sources">
+                <h3>اهم المصادر والمراجع</h3>
+                <ul class="styled-links">
+                    <li>
+                        <a href="https://www.codecademy.com/" target="_blank">
+                            <!-- <i class="fas fa-laptop-code"></i> -->
+                             Codecademy (برمجة تفاعلية)
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://www.behance.net/" target="_blank">
+                            <!-- <i class="fab fa-behance"></i> -->
+                             Behance (تصميم جرافيك)
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://analytics.google.com/analytics/academy/" target="_blank">
+                            <!-- <i class="fas fa-chart-line"></i> -->
+                             Google Analytics Academy
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://www.maharah.net/" target="_blank">
+                            <!-- <i class="fas fa-graduation-cap"></i> -->
+                             مهارة (منصة سعودية)
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://www.udemy.com/courses/office-productivity/" target="_blank">
+                            <!-- <i class="fas fa-file-excel"></i> -->
+                             دورات أوفيس على Udemy
+                        </a>
+                    </li>
+                </ul>
+            </div>
+            <div class="footer-contact">
+                <h3>تواصل معنا</h3>
+                <div class="social-icons">
+                    <a href=""><i class="fa-brands fa-facebook"></i></a>
+                    <a href=""><i class="fa-brands fa-instagram"></i></a>
+                    <a href=""><i class="fa-brands fa-google"></i></a>
+                    <a href=""><i class="fa-brands fa-whatsapp"></i></a>
+                    <a href=""><i class="fa-brands fa-youtube"></i></a>
+                </div>
+                <p>نهدف الي التعلم الجماعي , نتيح دورات في مختلف المجالات , دردشه جماعيه بين الطلاب والمعلمين , قسم خاص
+                    للتوظيف</p>
+            </div>
+        </div>
+    </div>
+
+    <div id="toast" class="toast">
+        <div class="toast-content"></div>
+        <div class="toast-progress"></div>
+    </div>
+
+    <script>
+        window.addEventListener('DOMContentLoaded', () => {
+          const jwtToken = localStorage.getItem("jwtToken");
+          const authLink = document.getElementById('authLink');
+        //    const backendUrl = "https://connected-mind-backend-yhg6.vercel.app/";
+        const backendUrl = "http://localhost:3000";
+
+          const headers = {
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${jwtToken}`
+        };
+        (async () => {
+            const res = await fetch(`${backendUrl}/api/auth/status`, { headers });
+            const data = await res.json();
+
+            if (!data.authenticated) {
+                window.location.href = 'login.html';
+            }
+        })();
+
+      
+          if (jwtToken) {
+            authLink.innerHTML = '<i class="fa-solid fa-right-from-bracket"></i>';
+            
+            authLink.addEventListener('click', async (e) => {
+              e.preventDefault();
+              
+              try {
+                const response = await fetch(`${backendUrl}/api/auth/logout`, {
+                  method: 'POST',
+                  headers: {
+                    'Authorization': `Bearer ${jwtToken}`
+                  }
+                });
+      
+                if (response.ok) {
+                  showToast('تم تسجيل الخروج بنجاح', false);
+                  localStorage.removeItem('jwtToken');
+                  window.location.href = 'login.html';
+                } else {
+                  console.error('فشل تسجيل الخروج');
+                  showToast('❌ فشل في تسجيل الخروج', true);
+                }
+              } catch (error) {
+                console.error('خطأ في الاتصال:', error);
+                showToast('❌ حدث خطأ أثناء الاتصال بالخادم', true);
+              }
+            });
+            
+          } else {
+            authLink.innerHTML = '<i class="fa-solid fa-right-from-bracket"></i>';
+            authLink.href = 'index.html';
+          }
+        });
+      
+           function showToast(message, isError = false) {
+              const toast = document.getElementById('toast');
+              toast.querySelector('.toast-content').textContent = message;
+              toast.className = `toast ${isError ? 'error' : 'success'}`;
+              toast.style.display = 'block';
+  
+              setTimeout(() => {
+                  toast.style.display = 'none';
+              }, 3000);
+          }
+      </script>
+
+</body>
+
+</html>

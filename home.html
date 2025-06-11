@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="ar">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- Google Fonts  -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cairo:wght@200..1000&display=swap"
+      rel="stylesheet"
+    />
+    <!-- Main Normalize File  -->
+    <link rel="stylesheet" href="Css/normalize.css" />
+    <!-- Main Style Css file -->
+    <link rel="stylesheet" href="Css/home.css" />
+    <!-- Font Awesome Library  -->
+    <link rel="stylesheet" href="Css/all.min.css" />
+    <title>عقول متصلة</title>
+
+    <style>
+      .toast {
+          position: fixed;
+          top: 20px;
+          right: 20px;
+          background: #4CAF50;
+          color: white;
+          padding: 15px;
+          border-radius: 4px;
+          display: none;
+          z-index: 1000;
+          box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+          animation: slideIn 0.5s ease-out;
+      }
+
+      .toast.success {
+          background: #28a745;
+      }
+
+      .toast.error {
+          background: #dc3545;
+      }
+
+      .toast-progress {
+          position: absolute;
+          bottom: 0;
+          left: 0;
+          height: 3px;
+          background: rgba(255, 255, 255, 0.5);
+          width: 100%;
+          animation: progress 3s linear forwards;
+      }
+
+      @keyframes slideIn {
+          from {
+              transform: translateX(100%);
+          }
+
+          to {
+              transform: translateX(0);
+          }
+      }
+
+      @keyframes progress {
+          from {
+              width: 100%;
+          }
+
+          to {
+              width: 0%;
+          }
+      }
+  </style>
+
+  </head>
+  <body>
+    <!-- بداية شريط التنقل -->
+    <header class="navbar">
+      <div class="container">
+        <div class="logo">
+          <a href="home.html">
+            <img  src="Graphics/Logo.png" alt="" />
+           </a>
+
+        </div>
+        <nav>
+          <ul class="nav-links">
+            <li><a href="#main" class="active">الرئيسية</a></li>
+            <li><a href="#description">الوصف</a></li>
+            <li><a href="courses.html">الدورات</a></li>
+            <li><a href="aichat.html">الذكاء الصناعي</a></li>
+            <li><a href="chat.html">المحادثات</a></li>
+            <li><a href="jobs.html">التوظيف</a></li>
+          </ul>
+        </nav>
+        <div style="display:flex; align-items: center; gap: 5px;" class="sign-in">
+          <div style="cursor: pointer;">
+            <a title="profile" href="profile.html"><i class="fa-solid fa-circle-user"></i></a>
+          </div>
+          <div  class="br-menu">
+            <a ><i class="fa-solid fa-bars"></i></a>
+          </div>
+
+          <!-- <div id="adminPanel" style="cursor: pointer;display: none;">
+            <a  href="admin.html">
+              <i style="color: white;" class="fa-regular fa-font-awesome"></i>
+             </a>
+          </div> -->
+          
+          
+          <a id="authLink" href="index.html"><i class="fa-solid fa-right-from-bracket"></i></a>
+        </div>
+      </div>
+    </header>
+    <!-- نهاية شريط التنقل -->
+
+    <!--  بداية القسم الرئيسي -->
+    <section class="hero" id="main">
+      <video autoplay loop muted plays-inline class="background-clip">
+        <source
+          src="Graphics/6550419-uhd_3840_2160_25fps.mp4"
+          type="video/mp4"
+        />
+      </video>
+      <div class="container">
+        <h1>مرحبًا بك في منصة عقول متصلة للتعليم التعاوني</h1>
+        <p>تعلم، شارك، وتعاون مع الآخرين!</p>
+        <div class="search-btn">
+          <input type="text" placeholder="بما تفكر....؟" />
+          <button class="cta">
+            <i class="fa-solid fa-magnifying-glass"></i>
+          </button>
+        </div>
+      </div>
+    </section>
+    <!--  نهاية القسم الرئيسي -->
+
+    <!-- بداية قسم الوصف  -->
+    <div class="description" id="description">
+      <div class="container">
+        <img
+          src="Graphics/93-936414_class-of-2016-graduation-clipart.png"
+          alt=""
+        />
+        <div class="description-p">
+          <h2>مقدمة مشروع التعلم التعاوني عبر الإنترنت</h2>
+          <p>
+            في ظل التطور التكنولوجي المتسارع، أصبح التعلم التعاوني عبر الإنترنت
+            وسيلة فعالة لتعزيز المعرفة، تبادل الخبرات، وتنمية المهارات بطريقة
+            تفاعلية. يهدف هذا المشروع إلى توفير بيئة تعليمية رقمية تتيح
+            للمتعلمين التعاون، المشاركة في الأنشطة الجماعية، والعمل المشترك على
+            حل المشكلات وتعزيز الفهم العميق للموضوعات المختلفة. من خلال هذا
+            المشروع، سيتم توظيف أدوات وتقنيات التعلم الإلكتروني، مثل المنتديات،
+            غرف الدردشة، المستندات المشتركة، والمنصات التعليمية، لضمان تواصل
+            فعال بين المشاركين. كما سيتم التركيز على تنمية مهارات التفكير
+            النقدي، العمل الجماعي، والإبداع من خلال أساليب التعلم النشط
+            والمشاريع التشاركية. نسعى إلى بناء مجتمع تعلمي ديناميكي يشجع على
+            التعاون، تبادل المعرفة، ودعم التعلم المستمر، مما يسهم في تحسين تجربة
+            التعلم وتعزيز النجاح الأكاديمي والمهني للمشاركين
+          </p>
+        </div>
+        <div class="shape"></div>
+      </div>
+    </div>
+    <!-- نهاية قسم الوصف  -->
+
+    <!-- بداية شريط النهايه  -->
+    <div class="footer">
+      <div class="container">
+        <a href="home.html">
+          <img  src="Graphics/Logo.png" alt="" />
+         </a>
+        <div class="footer-info">
+          <h3><i class="fa-solid fa-house"></i> معهد الدلتا العالي للحاسبات والمعلومات</i></h3>
+          <p><i class="fa-solid fa-phone"></i>+201005286752</p>
+          <p><i class="fa-solid fa-phone"></i>+201005286752</p>
+        </div>
+        <div class="footer-sources">
+          <h3>اهم المصادر والمراجع</h3>
+          <ul class="styled-links">
+            <li>
+                <a href="https://www.codecademy.com/" target="_blank">
+                    <!-- <i class="fas fa-laptop-code"></i> -->
+                     Codecademy (برمجة تفاعلية)
+                </a>
+            </li>
+            <li>
+                <a href="https://www.behance.net/" target="_blank">
+                    <!-- <i class="fab fa-behance"></i> -->
+                     Behance (تصميم جرافيك)
+                </a>
+            </li>
+            <li>
+                <a href="https://analytics.google.com/analytics/academy/" target="_blank">
+                    <!-- <i class="fas fa-chart-line"></i> -->
+                     Google Analytics Academy
+                </a>
+            </li>
+            <li>
+                <a href="https://www.maharah.net/" target="_blank">
+                    <!-- <i class="fas fa-graduation-cap"></i> -->
+                     مهارة (منصة سعودية)
+                </a>
+            </li>
+            <li>
+                <a href="https://www.udemy.com/courses/office-productivity/" target="_blank">
+                    <!-- <i class="fas fa-file-excel"></i> -->
+                     دورات أوفيس على Udemy
+                </a>
+            </li>
+        </ul>
+        </div>
+        <div class="footer-contact">
+        <h3>تواصل معنا</h3>
+        <div class="social-icons">
+          <a href=""><i class="fa-brands fa-facebook"></i></a>
+          <a href=""><i class="fa-brands fa-instagram"></i></a>
+          <a href=""><i class="fa-brands fa-google"></i></a>
+          <a href=""><i class="fa-brands fa-whatsapp"></i></a>
+          <a href=""><i class="fa-brands fa-youtube"></i></a>
+        </div>
+        <p>نهدف الي التعلم الجماعي , نتيح دورات في مختلف المجالات , دردشه جماعيه بين الطلاب والمعلمين , قسم خاص للتوظيف</p>
+      </div>
+      </div>
+    </div>
+
+    
+    <div id="toast" class="toast">
+      <div class="toast-content"></div>
+      <div class="toast-progress"></div>
+  </div>
+
+    <script src="script.js"></script>
+
+    <script>
+      window.addEventListener('DOMContentLoaded', () => {
+        const jwtToken = localStorage.getItem("jwtToken");
+        const authLink = document.getElementById('authLink');
+         const backendUrl = "https://connected-mind-backend-yhg6.vercel.app";
+        // const backendUrl = "http://localhost:3000";
+    
+        if (jwtToken) {
+          authLink.innerHTML = '<i class="fa-solid fa-right-from-bracket"></i>';
+          
+          authLink.addEventListener('click', async (e) => {
+            e.preventDefault();
+            
+            try {
+              const response = await fetch(`${backendUrl}/api/auth/logout`, {
+                method: 'POST',
+                headers: {
+                  'Authorization': `Bearer ${jwtToken}`
+                }
+              });
+    
+              if (response.ok) {
+                showToast('تم تسجيل الخروج بنجاح', false);
+                localStorage.removeItem('jwtToken');
+                window.location.href = 'login.html';
+              } else {
+                console.error('فشل تسجيل الخروج');
+                showToast('❌ فشل في تسجيل الخروج', true);
+              }
+            } catch (error) {
+              console.error('خطأ في الاتصال:', error);
+              showToast('❌ حدث خطأ أثناء الاتصال بالخادم', true);
+            }
+          });
+          
+        } else {
+          authLink.innerHTML = '<i class="fa-solid fa-right-from-bracket"></i>';
+          authLink.href = 'index.html';
+        }
+      });
+    
+         function showToast(message, isError = false) {
+            const toast = document.getElementById('toast');
+            toast.querySelector('.toast-content').textContent = message;
+            toast.className = `toast ${isError ? 'error' : 'success'}`;
+            toast.style.display = 'block';
+
+            setTimeout(() => {
+                toast.style.display = 'none';
+            }, 3000);
+        }
+    </script>
+
+  </body>
+</html>
