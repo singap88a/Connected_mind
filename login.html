@@ -119,8 +119,8 @@
     </div>
 
     <script>
-         const backendUrl = "https://connected-mind-backend-main-singap1.vercel.app";
-        // const backendUrl = "http://localhost:3000";
+        //  const backendUrl = "https://connected-mind-backend-main-singap1.vercel.app";
+        const backendUrl = "http://localhost:3000";
 
         const token = localStorage.getItem("jwtToken");
 
@@ -164,52 +164,58 @@
             }, 3000);
         }
 
-        document.getElementById('loginForm').addEventListener('submit', async (e) => {
-            e.preventDefault();
+   document.getElementById('loginForm').addEventListener('submit', async (e) => {
+  e.preventDefault();
 
-            const email = document.getElementById('login-email').value;
-            const password = document.getElementById('login-password').value;
+  const email = document.getElementById('login-email').value.trim();
+  const password = document.getElementById('login-password').value;
 
-            // تعطيل الزر أثناء الإرسال
-            const submitBtn = e.target.querySelector('button[type="submit"]');
-            submitBtn.disabled = true;
-            submitBtn.innerHTML = 'جاري التحميل...';
+  const submitBtn = e.target.querySelector('button[type="submit"]');
+  submitBtn.disabled = true;
+  submitBtn.innerHTML = 'جاري التحميل...';
 
-            try {
-                const res = await fetch(`${backendUrl}/api/auth/login`, {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({ email, password })
-                });
+  try {
+    console.log('Attempting login with:', { email });
+    
+    const res = await fetch(`${backendUrl}/api/auth/login`, {
+      method: 'POST',
+      headers: { 
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ 
+        email, 
+        password
+      })
+    });
 
-                // التحقق من حالة الاستجابة أولاً
-                if (!res.ok) {
-                    const errorData = await res.json();
-                    throw new Error(errorData.message || 'فشل تسجيل الدخول');
-                }
+    const data = await res.json();
+    console.log('Server response:', data);
 
-                const data = await res.json();
+    if (!res.ok) {
+      throw new Error(data.message || 'فشل تسجيل الدخول');
+    }
 
-                showToast('✅ تم تسجيل الدخول بنجاح!');
+    if (data.token) {
+      localStorage.setItem('jwtToken', data.token);
+      localStorage.setItem('userEmail', email);
+      
+      showToast('✅ تم تسجيل الدخول بنجاح!');
+      
+      setTimeout(() => {
+        window.location.href = 'home.html';
+      }, 1500);
+    } else {
+      throw new Error('لم يتم استلام رمز المصادقة');
+    }
 
-                // تخزين التوكن إذا وجد
-                if (data.token) {
-                    localStorage.setItem('jwtToken', data.token);
-                }
-
-                setTimeout(() => {
-                    window.location.href = 'home.html';
-                }, 1500);
-
-            } catch (error) {
-                console.error('Login error:', error);
-                showToast(`❌ ${error.message || 'حدث خطأ غير متوقع'}`, true);
-            } finally {
-                // إعادة تمكين الزر
-                submitBtn.disabled = false;
-                submitBtn.innerHTML = 'سجل الان';
-            }
-        });
+  } catch (error) {
+    console.error('Login error:', error);
+    showToast(`❌ ${error.message || 'حدث خطأ غير متوقع'}`, true);
+  } finally {
+    submitBtn.disabled = false;
+    submitBtn.innerHTML = 'سجل الان';
+  }
+});
     </script>
 
 </body>
