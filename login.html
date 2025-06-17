@@ -119,9 +119,7 @@
     </div>
 
     <script>
-          const backendUrl = "https://connected-mind-backend-main-singap1.vercel.app";
-        // const backendUrl = "http://localhost:3000";
-
+        const backendUrl = "https://connected-mind-backend-main-singap1.vercel.app";
         const token = localStorage.getItem("jwtToken");
 
         const headers = {
@@ -181,6 +179,7 @@
       method: 'POST',
       headers: { 
         'Content-Type': 'application/json',
+        'Accept': 'application/json'
       },
       body: JSON.stringify({ 
         email, 
@@ -188,11 +187,20 @@
       })
     });
 
+    console.log('Response status:', res.status);
     const data = await res.json();
     console.log('Server response:', data);
 
     if (!res.ok) {
-      throw new Error(data.message || 'فشل تسجيل الدخول');
+      if (res.status === 500) {
+        throw new Error('خطأ في الخادم: يرجى المحاولة مرة أخرى لاحقاً');
+      } else if (res.status === 401) {
+        throw new Error('البريد الإلكتروني أو كلمة المرور غير صحيحة');
+      } else if (res.status === 404) {
+        throw new Error('الخادم غير متوفر حالياً');
+      } else {
+        throw new Error(data.message || `خطأ في الخادم: ${res.status}`);
+      }
     }
 
     if (data.token) {
@@ -210,7 +218,15 @@
 
   } catch (error) {
     console.error('Login error:', error);
-    showToast(`❌ ${error.message || 'حدث خطأ غير متوقع'}`, true);
+    let errorMessage = 'حدث خطأ غير متوقع';
+    
+    if (error.message.includes('Failed to fetch')) {
+      errorMessage = 'لا يمكن الاتصال بالخادم. يرجى التحقق من اتصال الإنترنت';
+    } else {
+      errorMessage = error.message;
+    }
+    
+    showToast(`❌ ${errorMessage}`, true);
   } finally {
     submitBtn.disabled = false;
     submitBtn.innerHTML = 'سجل الان';
